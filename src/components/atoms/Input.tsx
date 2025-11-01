@@ -1,8 +1,8 @@
 import { forwardRef, type InputHTMLAttributes } from 'react';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   /** Input type */
-  type?: 'text' | 'email' | 'tel' | 'password';
+  type?: 'text' | 'email' | 'tel' | 'password' | 'number' | 'url' | 'search';
   /** Placeholder text */
   placeholder?: string;
   /** Error state */
@@ -37,19 +37,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     } ${className}`.trim();
 
     return (
-      <div className="w-full">
-        <input
-          ref={ref}
-          type={type}
-          placeholder={placeholder}
-          className={inputClasses}
-          disabled={disabled}
-          {...props}
-        />
-        {error && errorMessage && (
-          <p className="mt-1 text-sm text-gray-600">{errorMessage}</p>
-        )}
-      </div>
+      <input
+        ref={ref}
+        type={type}
+        placeholder={placeholder}
+        className={inputClasses}
+        disabled={disabled}
+        {...props}
+      />
     );
   }
 );
