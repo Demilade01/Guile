@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Typography } from '../atoms/Typography.tsx';
 
 interface FAQItem {
@@ -44,43 +45,83 @@ export const FAQ = () => {
   return (
     <section className="w-full py-16 md:py-24 px-4 md:px-8 bg-gray-50">
       <div className="max-w-3xl mx-auto">
-        <Typography variant="h2" className="text-center mb-4">
-          Frequently asked questions
-        </Typography>
-        <Typography
-          variant="body"
-          className="text-center text-gray-600 mb-12"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5 }}
         >
-          Got questions? We've got answers.
-        </Typography>
+          <Typography variant="h2" className="text-center mb-4">
+            Frequently asked questions
+          </Typography>
+          <Typography
+            variant="body"
+            className="text-center text-gray-600 mb-12"
+          >
+            Got questions? We've got answers.
+          </Typography>
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div
+          className="space-y-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 },
+              }}
               className="border-2 border-gray-200 rounded-lg overflow-hidden"
             >
-              <button
+              <motion.button
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                whileHover={{ backgroundColor: '#f9fafb' }}
               >
                 <Typography variant="h4" className="font-medium">
                   {faq.question}
                 </Typography>
-                <span className="text-2xl text-gray-400 ml-4">
-                  {openIndex === index ? '−' : '+'}
-                </span>
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <Typography variant="body" className="text-gray-600">
-                    {faq.answer}
-                  </Typography>
-                </div>
-              )}
-            </div>
+                <motion.span
+                  className="text-2xl text-gray-400 ml-4"
+                  animate={{ rotate: openIndex === index ? 45 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  +
+                </motion.span>
+              </motion.button>
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-4">
+                      <Typography variant="body" className="text-gray-600">
+                        {faq.answer}
+                      </Typography>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle } from 'lucide-react';
 import { FormField } from '../molecules/FormField.tsx';
 import { Button } from '../atoms/Button.tsx';
 import { Typography } from '../atoms/Typography.tsx';
@@ -57,14 +59,33 @@ export const WaitlistForm = () => {
         id="waitlist-form"
         className="w-full py-16 px-4 md:px-8 bg-gray-50"
       >
-        <div className="max-w-2xl mx-auto text-center">
-          <Typography variant="h2" className="mb-4">
-            You're on the list! 🎉
-          </Typography>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+            className="mb-4"
+          >
+            <CheckCircle className="w-16 h-16 mx-auto mb-4 text-black" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <Typography variant="h2" className="mb-4">
+              You're on the list!
+            </Typography>
+          </motion.div>
           <Typography variant="body" className="text-gray-600">
             We'll notify you when Guile launches in {formData.city}.
           </Typography>
-        </div>
+        </motion.div>
       </section>
     );
   }
@@ -72,15 +93,22 @@ export const WaitlistForm = () => {
   return (
     <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-gray-50">
       <div className="max-w-2xl mx-auto">
-        <Typography variant="h2" className="mb-2 text-center">
-          Join the waitlist
-        </Typography>
-        <Typography
-          variant="body"
-          className="text-center text-gray-600 mb-8"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5 }}
         >
-          Be the first to know when we launch
-        </Typography>
+          <Typography variant="h2" className="mb-2 text-center">
+            Join the waitlist
+          </Typography>
+          <Typography
+            variant="body"
+            className="text-center text-gray-600 mb-8"
+          >
+            Be the first to know when we launch
+          </Typography>
+        </motion.div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <FormField
