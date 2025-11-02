@@ -84,12 +84,12 @@ export const FAQ = () => {
                 hidden: { opacity: 0, y: 10 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="border-2 border-gray-200 rounded-lg overflow-hidden"
+              className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 overflow-hidden"
             >
               <motion.button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                whileHover={{ backgroundColor: '#f9fafb' }}
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/40 transition-colors"
+                whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
               >
                 <Typography variant="h4" className="font-medium">
                   {faq.question}

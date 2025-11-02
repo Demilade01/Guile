@@ -85,8 +85,8 @@ export const HowItWorks = () => {
             <motion.div
               key={index}
               variants={stepVariants}
-              whileHover={{ y: -5 }}
-              className="flex flex-col items-center text-center"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="flex flex-col items-center text-center p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <motion.div
                 className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center mb-4"

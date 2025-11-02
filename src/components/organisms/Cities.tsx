@@ -52,12 +52,12 @@ export const Cities = () => {
           }}
         >
           <motion.div
-            className="p-6 border-2 border-gray-200 rounded-lg"
+            className="p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
             variants={{
               hidden: { opacity: 0, x: -20 },
               visible: { opacity: 1, x: 0 },
             }}
-            whileHover={{ scale: 1.02, borderColor: '#000' }}
+            whileHover={{ scale: 1.02, y: -4 }}
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-2 mb-4">
@@ -70,12 +70,12 @@ export const Cities = () => {
             </Typography>
           </motion.div>
           <motion.div
-            className="p-6 border-2 border-gray-200 rounded-lg"
+            className="p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
             variants={{
               hidden: { opacity: 0, x: 20 },
               visible: { opacity: 1, x: 0 },
             }}
-            whileHover={{ scale: 1.02, borderColor: '#000' }}
+            whileHover={{ scale: 1.02, y: -4 }}
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-2 mb-4">

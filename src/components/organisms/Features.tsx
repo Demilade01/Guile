@@ -85,8 +85,8 @@ export const Features = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className="p-6 border-2 border-gray-200 rounded-lg hover:border-black transition-colors"
+              whileHover={{ scale: 1.02, y: -4 }}
+              className="p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
             >
               <div className="mb-4 text-black">{feature.icon}</div>
               <Typography variant="h4" className="mb-3">

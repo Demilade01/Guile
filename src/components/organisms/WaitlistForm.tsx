@@ -54,11 +54,11 @@ export const WaitlistForm = () => {
   };
 
   if (isSubmitted) {
-    return (
-      <section
-        id="waitlist-form"
-        className="w-full py-16 px-4 md:px-8 bg-gray-50"
-      >
+      return (
+        <section
+          id="waitlist-form"
+          className="w-full py-16 px-4 md:px-8 bg-linear-to-b from-gray-50 to-white"
+        >
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -90,9 +90,9 @@ export const WaitlistForm = () => {
     );
   }
 
-  return (
-    <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-gray-50">
-      <div className="max-w-2xl mx-auto">
+        return (
+          <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-linear-to-b from-gray-50 to-white">
+            <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,14 @@ export const WaitlistForm = () => {
           </Typography>
         </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="space-y-6 p-8 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm"
+        >
           <FormField
             label="Name"
             type="text"
@@ -151,7 +158,7 @@ export const WaitlistForm = () => {
                   }
                   className="sr-only peer"
                 />
-                <div className="border-2 border-gray-300 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-gray-50 hover:border-gray-400">
+                <div className="border border-gray-200/50 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-white/80 backdrop-blur-sm hover:border-gray-300 bg-white/40">
                   <span className="font-medium">Boston</span>
                 </div>
               </label>
@@ -166,7 +173,7 @@ export const WaitlistForm = () => {
                   }
                   className="sr-only peer"
                 />
-                <div className="border-2 border-gray-300 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-gray-50 hover:border-gray-400">
+                <div className="border border-gray-200/50 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-white/80 backdrop-blur-sm hover:border-gray-300 bg-white/40">
                   <span className="font-medium">NYC</span>
                 </div>
               </label>
@@ -185,9 +192,9 @@ export const WaitlistForm = () => {
             fullWidth
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Joining...' : 'Join Waitlist'}
-          </Button>
-        </form>
+                  {isSubmitting ? 'Joining...' : 'Join Waitlist'}
+                </Button>
+              </motion.form>
       </div>
     </section>
   );

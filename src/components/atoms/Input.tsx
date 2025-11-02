@@ -25,12 +25,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const baseStyles =
-      'w-full px-4 py-3 text-base border-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+      'w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
     const normalStyles =
-      'border-gray-300 bg-white text-black focus:border-black focus:ring-black placeholder:text-gray-400';
+      'border-gray-200/50 bg-white/60 backdrop-blur-sm text-black focus:border-black focus:ring-black placeholder:text-gray-400';
     const errorStyles =
-      'border-gray-600 bg-white text-black focus:border-black focus:ring-black';
+      'border-gray-600 bg-white/60 backdrop-blur-sm text-black focus:border-black focus:ring-black';
 
     const inputClasses = `${baseStyles} ${
       error ? errorStyles : normalStyles
