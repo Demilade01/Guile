@@ -15,7 +15,7 @@ export const CityBadge = ({ city, size = 'md', className = '' }: CityBadgeProps)
 
   return (
     <span
-      className={`inline-flex items-center font-semibold rounded-full border-2 border-black bg-white text-black ${sizes[size]} ${className}`.trim()}
+      className={`inline-flex items-center font-semibold rounded-full border-2 border-white bg-black text-white ${sizes[size]} ${className}`.trim()}
     >
       {city}
     </span>

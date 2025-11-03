@@ -28,9 +28,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       'w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
     const normalStyles =
-      'border-gray-200/50 bg-white/60 backdrop-blur-sm text-black focus:border-black focus:ring-black placeholder:text-gray-400';
+      'border-white/10 bg-white/5 backdrop-blur-sm text-white focus:border-white focus:ring-white placeholder:text-gray-500';
     const errorStyles =
-      'border-gray-600 bg-white/60 backdrop-blur-sm text-black focus:border-black focus:ring-black';
+      'border-red-500/40 bg-white/5 backdrop-blur-sm text-white focus:border-red-500 focus:ring-red-500';
 
     const inputClasses = `${baseStyles} ${
       error ? errorStyles : normalStyles

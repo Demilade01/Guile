@@ -54,7 +54,7 @@ const stepVariants = {
 
 export const HowItWorks = () => {
   return (
-    <section className="w-full py-16 md:py-24 px-4 md:px-8 bg-gray-50">
+    <section className="w-full py-16 md:py-24 px-4 md:px-8 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export const HowItWorks = () => {
           </Typography>
           <Typography
             variant="body"
-            className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
+            className="text-center mb-12 max-w-2xl mx-auto"
           >
             Getting started with Guile is simple. Follow these steps to transform
             how you manage your barbershop.
@@ -86,10 +86,10 @@ export const HowItWorks = () => {
               key={index}
               variants={stepVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="flex flex-col items-center text-center p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300"
+              className="flex flex-col items-center text-center p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <motion.div
-                className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center mb-4"
+                className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mb-4"
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ duration: 0.3 }}
               >
@@ -98,7 +98,7 @@ export const HowItWorks = () => {
               <Typography variant="h4" className="mb-3">
                 {step.title}
               </Typography>
-              <Typography variant="body" className="text-gray-600">
+              <Typography variant="body" className="">
                 {step.description}
               </Typography>
             </motion.div>

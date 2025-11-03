@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
 import { FormField } from '../molecules/FormField.tsx';
 import { Button } from '../atoms/Button.tsx';
@@ -57,7 +57,7 @@ export const WaitlistForm = () => {
       return (
         <section
           id="waitlist-form"
-          className="w-full py-16 px-4 md:px-8 bg-linear-to-b from-gray-50 to-white"
+          className="w-full py-16 px-4 md:px-8 bg-transparent"
         >
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -71,7 +71,7 @@ export const WaitlistForm = () => {
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
             className="mb-4"
           >
-            <CheckCircle className="w-16 h-16 mx-auto mb-4 text-black" />
+            <CheckCircle className="w-16 h-16 mx-auto mb-4 text-white" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ export const WaitlistForm = () => {
               You're on the list!
             </Typography>
           </motion.div>
-          <Typography variant="body" className="text-gray-600">
+          <Typography variant="body" className="">
             We'll notify you when Guile launches in {formData.city}.
           </Typography>
         </motion.div>
@@ -91,7 +91,7 @@ export const WaitlistForm = () => {
   }
 
         return (
-          <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-linear-to-b from-gray-50 to-white">
+          <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-transparent">
             <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export const WaitlistForm = () => {
           </Typography>
           <Typography
             variant="body"
-            className="text-center text-gray-600 mb-8"
+            className="text-center mb-8"
           >
             Be the first to know when we launch
           </Typography>
@@ -116,7 +116,7 @@ export const WaitlistForm = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-6 p-8 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm"
+          className="space-y-6 p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl shadow-sm"
         >
           <FormField
             label="Name"
@@ -143,8 +143,8 @@ export const WaitlistForm = () => {
           />
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-black mb-2">
-              City <span className="text-gray-500 ml-1">*</span>
+            <label className="block text-sm font-medium text-white mb-2">
+              City <span className="text-gray-400 ml-1">*</span>
             </label>
             <div className="grid grid-cols-2 gap-4">
               <label className="block cursor-pointer">
@@ -158,7 +158,7 @@ export const WaitlistForm = () => {
                   }
                   className="sr-only peer"
                 />
-                <div className="border border-gray-200/50 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-white/80 backdrop-blur-sm hover:border-gray-300 bg-white/40">
+                <div className="border border-white/20 rounded-lg p-4 text-center transition-all peer-checked:border-white peer-checked:bg-white/20 backdrop-blur-sm hover:border-white/40 bg-white/5 text-white">
                   <span className="font-medium">Boston</span>
                 </div>
               </label>
@@ -173,13 +173,13 @@ export const WaitlistForm = () => {
                   }
                   className="sr-only peer"
                 />
-                <div className="border border-gray-200/50 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-white/80 backdrop-blur-sm hover:border-gray-300 bg-white/40">
+                <div className="border border-white/20 rounded-lg p-4 text-center transition-all peer-checked:border-white peer-checked:bg-white/20 backdrop-blur-sm hover:border-white/40 bg-white/5 text-white">
                   <span className="font-medium">NYC</span>
                 </div>
               </label>
             </div>
             {errors.city && (
-              <Typography variant="small" className="text-gray-700 font-medium">
+              <Typography variant="small" className="text-red-400 font-medium">
                 {errors.city}
               </Typography>
             )}

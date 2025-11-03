@@ -5,7 +5,7 @@ import { CityBadge } from '../molecules/CityBadge.tsx';
 
 export const Cities = () => {
   return (
-    <section id="cities" className="w-full py-16 md:py-24 px-4 md:px-8 bg-white">
+    <section id="cities" className="w-full py-16 md:py-24 px-4 md:px-8 bg-transparent">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export const Cities = () => {
           </Typography>
           <Typography
             variant="body"
-            className="text-gray-600 mb-8 max-w-2xl mx-auto"
+            className="mb-8 max-w-2xl mx-auto"
           >
             We're starting with Boston and NYC to ensure we build the best
             platform for barbers. More cities coming soon.
@@ -52,7 +52,7 @@ export const Cities = () => {
           }}
         >
           <motion.div
-            className="p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+            className="p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-sm hover:shadow-lg hover:border-white/40 transition-all duration-300"
             variants={{
               hidden: { opacity: 0, x: -20 },
               visible: { opacity: 1, x: 0 },
@@ -61,16 +61,16 @@ export const Cities = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <MapPin className="w-5 h-5 text-gray-600" />
+              <MapPin className="w-5 h-5 text-gray-400" />
               <CityBadge city="Boston" size="sm" />
             </div>
-            <Typography variant="body" className="text-gray-600">
+            <Typography variant="body" className="">
               Launching in Boston Q1 2025. Join the waitlist to be among the
               first barbers to experience Guile.
             </Typography>
           </motion.div>
           <motion.div
-            className="p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+            className="p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-sm hover:shadow-lg hover:border-white/40 transition-all duration-300"
             variants={{
               hidden: { opacity: 0, x: 20 },
               visible: { opacity: 1, x: 0 },
@@ -79,10 +79,10 @@ export const Cities = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <MapPin className="w-5 h-5 text-gray-600" />
+              <MapPin className="w-5 h-5 text-gray-400" />
               <CityBadge city="NYC" size="sm" />
             </div>
-            <Typography variant="body" className="text-gray-600">
+            <Typography variant="body" className="">
               Launching in NYC Q1 2025. Get early access and help shape the
               future of barbershop management.
             </Typography>

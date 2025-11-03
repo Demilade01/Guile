@@ -10,7 +10,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="w-full py-16 md:py-24 px-4 md:px-8 bg-white">
+    <section className="w-full py-16 md:py-24 px-4 md:px-8 bg-transparent">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Typography variant="body" className="text-gray-600 mb-8 max-w-2xl mx-auto">
+          <Typography variant="body" className="mb-8 max-w-2xl mx-auto">
             Join our waitlist now! We're launching in Boston and NYC to start. Get
             early access to the booking platform designed specifically for barbers.
           </Typography>

@@ -54,7 +54,7 @@ const itemVariants = {
 
 export const Features = () => {
   return (
-    <section id="features" className="w-full py-16 md:py-24 px-4 md:px-8 bg-white">
+    <section id="features" className="w-full py-16 md:py-24 px-4 md:px-8 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export const Features = () => {
           </Typography>
           <Typography
             variant="body"
-            className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
+            className="text-center mb-12 max-w-2xl mx-auto"
           >
             Everything you need to run your barbershop efficiently, all in one
             platform.
@@ -86,13 +86,13 @@ export const Features = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.02, y: -4 }}
-              className="p-6 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+              className="p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-sm hover:shadow-lg hover:border-white/40 transition-all duration-300"
             >
-              <div className="mb-4 text-black">{feature.icon}</div>
+              <div className="mb-4 text-white">{feature.icon}</div>
               <Typography variant="h4" className="mb-3">
                 {feature.title}
               </Typography>
-              <Typography variant="body" className="text-gray-600">
+              <Typography variant="body" className="">
                 {feature.description}
               </Typography>
             </motion.div>
