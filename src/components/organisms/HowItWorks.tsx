@@ -1,35 +1,14 @@
 import { motion } from 'framer-motion';
 import { UserPlus, CalendarCheck, CheckCircle, TrendingUp } from 'lucide-react';
 import { Typography } from '../atoms/Typography.tsx';
+import { HOW_IT_WORKS_STEPS, type StepItem } from '../../constants/index.ts';
 
-interface Step {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const steps: Step[] = [
-  {
-    icon: <UserPlus className="w-8 h-8" />,
-    title: 'Sign Up',
-    description: 'Join the waitlist and get early access when we launch in your city.',
-  },
-  {
-    icon: <CalendarCheck className="w-8 h-8" />,
-    title: 'Set Your Schedule',
-    description: 'Define your availability, services, and pricing in minutes.',
-  },
-  {
-    icon: <CheckCircle className="w-8 h-8" />,
-    title: 'Start Accepting Bookings',
-    description: 'Clients can book appointments online, and you manage everything from your dashboard.',
-  },
-  {
-    icon: <TrendingUp className="w-8 h-8" />,
-    title: 'Grow Your Business',
-    description: 'Use insights and tools to optimize your operations and build your client base.',
-  },
-];
+const stepIconMap: Record<StepItem['icon'], React.ComponentType<{ className?: string }>> = {
+  userPlus: UserPlus,
+  calendarCheck: CalendarCheck,
+  checkCircle: CheckCircle,
+  trendingUp: TrendingUp,
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -81,28 +60,31 @@ export const HowItWorks = () => {
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              variants={stepVariants}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="flex flex-col items-center text-center p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300"
-            >
+          {HOW_IT_WORKS_STEPS.map((step, index) => {
+            const Icon = stepIconMap[step.icon];
+            return (
               <motion.div
-                className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mb-4"
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                transition={{ duration: 0.3 }}
+                key={index}
+                variants={stepVariants}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="flex flex-col items-center text-center p-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300"
               >
-                {step.icon}
+                <motion.div
+                  className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mb-4"
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Icon className="w-8 h-8" />
+                </motion.div>
+                <Typography variant="h4" className="mb-3">
+                  {step.title}
+                </Typography>
+                <Typography variant="body" className="">
+                  {step.description}
+                </Typography>
               </motion.div>
-              <Typography variant="h4" className="mb-3">
-                {step.title}
-              </Typography>
-              <Typography variant="body" className="">
-                {step.description}
-              </Typography>
-            </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>
