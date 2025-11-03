@@ -1,39 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Typography } from '../atoms/Typography.tsx';
-
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-const faqs: FAQItem[] = [
-  {
-    question: 'How much does Guile cost?',
-    answer:
-      'Pricing details will be announced closer to launch. Join the waitlist to be notified first and get early access pricing.',
-  },
-  {
-    question: 'When will Guile launch?',
-    answer:
-      'We\'re launching in Boston and NYC in Q1 2025. More cities will follow based on demand.',
-  },
-  {
-    question: 'What makes Guile different from other booking apps?',
-    answer:
-      'Guile is built specifically for barbers with features tailored to barbershop operations, client management, and the unique needs of the barbering industry.',
-  },
-  {
-    question: 'Do I need any technical knowledge to use Guile?',
-    answer:
-      'Not at all! Guile is designed to be intuitive and easy to use. If you can use a smartphone, you can use Guile.',
-  },
-  {
-    question: 'Can I use Guile if I\'m not in Boston or NYC?',
-    answer:
-      'Initially, Guile will launch in Boston and NYC. However, you can join the waitlist from anywhere, and we\'ll notify you when we expand to your city.',
-  },
-];
+import { FAQ_ITEMS, type FAQItem } from '../../constants/index.ts';
 
 export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -77,7 +45,7 @@ export const FAQ = () => {
             },
           }}
         >
-          {faqs.map((faq, index) => (
+          {FAQ_ITEMS.map((faq: FAQItem, index: number) => (
             <motion.div
               key={index}
               variants={{
