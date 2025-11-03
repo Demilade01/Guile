@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from 'react';
+import { motion } from 'framer-motion';
+import { CheckCircle } from 'lucide-react';
 import { FormField } from '../molecules/FormField.tsx';
 import { Button } from '../atoms/Button.tsx';
 import { Typography } from '../atoms/Typography.tsx';
@@ -52,37 +54,70 @@ export const WaitlistForm = () => {
   };
 
   if (isSubmitted) {
-    return (
-      <section
-        id="waitlist-form"
-        className="w-full py-16 px-4 md:px-8 bg-gray-50"
-      >
-        <div className="max-w-2xl mx-auto text-center">
-          <Typography variant="h2" className="mb-4">
-            You're on the list! 🎉
-          </Typography>
-          <Typography variant="body" className="text-gray-600">
+      return (
+        <section
+          id="waitlist-form"
+          className="w-full py-16 px-4 md:px-8 bg-transparent"
+        >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+            className="mb-4"
+          >
+            <CheckCircle className="w-16 h-16 mx-auto mb-4 text-white" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <Typography variant="h2" className="mb-4">
+              You're on the list!
+            </Typography>
+          </motion.div>
+          <Typography variant="body" className="">
             We'll notify you when Guile launches in {formData.city}.
           </Typography>
-        </div>
+        </motion.div>
       </section>
     );
   }
 
-  return (
-    <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-gray-50">
-      <div className="max-w-2xl mx-auto">
-        <Typography variant="h2" className="mb-2 text-center">
-          Join the waitlist
-        </Typography>
-        <Typography
-          variant="body"
-          className="text-center text-gray-600 mb-8"
+        return (
+          <section id="waitlist-form" className="w-full py-16 px-4 md:px-8 bg-transparent">
+            <div className="max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5 }}
         >
-          Be the first to know when we launch
-        </Typography>
+          <Typography variant="h2" className="mb-2 text-center">
+            Join the waitlist
+          </Typography>
+          <Typography
+            variant="body"
+            className="text-center mb-8"
+          >
+            Be the first to know when we launch
+          </Typography>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="space-y-6 p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl shadow-sm"
+        >
           <FormField
             label="Name"
             type="text"
@@ -108,8 +143,8 @@ export const WaitlistForm = () => {
           />
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-black mb-2">
-              City <span className="text-gray-500 ml-1">*</span>
+            <label className="block text-sm font-medium text-white mb-2">
+              City <span className="text-gray-400 ml-1">*</span>
             </label>
             <div className="grid grid-cols-2 gap-4">
               <label className="block cursor-pointer">
@@ -123,7 +158,7 @@ export const WaitlistForm = () => {
                   }
                   className="sr-only peer"
                 />
-                <div className="border-2 border-gray-300 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-gray-50 hover:border-gray-400">
+                <div className="border border-white/20 rounded-lg p-4 text-center transition-all peer-checked:border-white peer-checked:bg-white/20 backdrop-blur-sm hover:border-white/40 bg-white/5 text-white">
                   <span className="font-medium">Boston</span>
                 </div>
               </label>
@@ -138,13 +173,13 @@ export const WaitlistForm = () => {
                   }
                   className="sr-only peer"
                 />
-                <div className="border-2 border-gray-300 rounded-lg p-4 text-center transition-all peer-checked:border-black peer-checked:bg-gray-50 hover:border-gray-400">
+                <div className="border border-white/20 rounded-lg p-4 text-center transition-all peer-checked:border-white peer-checked:bg-white/20 backdrop-blur-sm hover:border-white/40 bg-white/5 text-white">
                   <span className="font-medium">NYC</span>
                 </div>
               </label>
             </div>
             {errors.city && (
-              <Typography variant="small" className="text-gray-700 font-medium">
+              <Typography variant="small" className="text-red-400 font-medium">
                 {errors.city}
               </Typography>
             )}
@@ -157,9 +192,9 @@ export const WaitlistForm = () => {
             fullWidth
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Joining...' : 'Join Waitlist'}
-          </Button>
-        </form>
+                  {isSubmitting ? 'Joining...' : 'Join Waitlist'}
+                </Button>
+              </motion.form>
       </div>
     </section>
   );

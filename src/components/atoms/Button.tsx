@@ -29,9 +29,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-black text-white hover:bg-gray-900 focus:ring-black active:bg-gray-800',
+        'bg-white text-black hover:bg-gray-200 focus:ring-white focus:ring-offset-black active:bg-gray-300',
       secondary:
-        'bg-white text-black border-2 border-black hover:bg-gray-50 focus:ring-black active:bg-gray-100',
+        'bg-transparent text-white border-2 border-white/50 hover:border-white hover:bg-white/10 focus:ring-white active:bg-white/20',
     };
 
     const sizes = {

@@ -10,13 +10,13 @@ export interface TypographyProps extends HTMLAttributes<HTMLElement> {
 }
 
 const variantStyles = {
-  h1: 'text-5xl md:text-6xl font-bold tracking-tight',
-  h2: 'text-4xl md:text-5xl font-bold tracking-tight',
-  h3: 'text-3xl md:text-4xl font-bold',
-  h4: 'text-2xl md:text-3xl font-semibold',
-  body: 'text-base leading-relaxed',
-  small: 'text-sm text-gray-600',
-  label: 'text-sm font-medium text-black',
+  h1: 'text-5xl md:text-6xl font-bold tracking-tight text-white',
+  h2: 'text-4xl md:text-5xl font-bold tracking-tight text-white',
+  h3: 'text-3xl md:text-4xl font-bold text-white',
+  h4: 'text-2xl md:text-3xl font-semibold text-white',
+  body: 'text-base leading-relaxed text-gray-300',
+  small: 'text-sm text-gray-400',
+  label: 'text-sm font-medium text-white',
 };
 
 const defaultTags = {

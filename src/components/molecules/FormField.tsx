@@ -35,10 +35,10 @@ export const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
       <div className={`flex flex-col gap-2 w-full ${className}`.trim()}>
         <label
           htmlFor={fieldId}
-          className="block mb-1 text-sm font-medium text-black"
+          className="block mb-1 text-sm font-medium text-white"
         >
           {label}
-          {required && <span className="text-gray-500 ml-1" aria-label="required">*</span>}
+          {required && <span className="text-gray-400 ml-1" aria-label="required">*</span>}
         </label>
         <Input
           ref={ref}
@@ -48,12 +48,12 @@ export const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
           {...inputProps}
         />
         {helperText && !hasError && (
-          <Typography variant="small" className="mt-0.5 text-gray-500">
+          <Typography variant="small" className="mt-0.5 text-gray-400">
             {helperText}
           </Typography>
         )}
         {hasError && errorMessage && (
-          <Typography variant="small" className="mt-0.5 text-gray-700 font-medium">
+          <Typography variant="small" className="mt-0.5 text-red-400 font-medium">
             {errorMessage}
           </Typography>
         )}
