@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Typography } from '../atoms/Typography.tsx';
 import { CityBadge } from '../molecules/CityBadge.tsx';
 import { Button } from '../atoms/Button.tsx';
+import { IMAGES } from '../../constants/index.ts';
 
 export const Hero = () => {
   const scrollToWaitlist = () => {
@@ -11,11 +12,13 @@ export const Hero = () => {
 
   return (
     <section className="relative w-full py-20 md:py-28 px-4 md:px-8 bg-transparent overflow-hidden">
-      {/* Subtle radial glow background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full blur-3xl bg-white/5" />
-        <div className="absolute top-1/2 -translate-y-1/2 left-[-200px] w-[600px] h-[600px] rounded-full blur-3xl bg-white/3" />
-      </div>
+      {/* Full-bleed photo background */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: `url(${IMAGES.heroBg})` }}
+      />
+      {/* Dark overlay to keep readability */}
+      <div className="absolute inset-0 -z-10 bg-black/70" />
 
       <div className="relative max-w-4xl mx-auto text-center">
         <motion.div
