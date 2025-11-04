@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Calendar, Users, Bell, BarChart } from 'lucide-react';
 import { Typography } from '../atoms/Typography.tsx';
 import { FEATURES, type FeatureItem } from '../../constants/index.ts';
+import { IMAGES } from '../../constants/index.ts';
 
 const iconMap: Record<FeatureItem['icon'], React.ComponentType<{ className?: string }>> = {
   calendar: Calendar,
@@ -34,10 +35,12 @@ export const Features = () => {
 
   return (
     <section id="features" className="relative w-full py-20 md:py-28 px-4 md:px-8 bg-transparent overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 right-[-200px] w-[700px] h-[700px] rounded-full blur-3xl bg-white/4" />
-      </div>
+      {/* Photo background */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: `url(${IMAGES.featuresBg})` }}
+      />
+      <div className="absolute inset-0 -z-10 bg-black/75" />
 
       <div className="relative max-w-6xl mx-auto">
         <motion.div

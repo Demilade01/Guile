@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '../atoms/Logo.tsx';
 
+const accentHover = 'hover:text-yellow-300';
+
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,8 +25,8 @@ export const Header = () => {
       transition={{ duration: 0.5 }}
       className={`w-full py-3 md:py-4 px-4 md:px-8 border-b border-gray-800 sticky top-0 z-50 transition-all duration-300 rounded-b-2xl ${
         isScrolled
-          ? 'bg-black/80 backdrop-blur-md'
-          : 'bg-black'
+          ? 'bg-black/80 backdrop-blur-lg'
+          : 'bg-black/90'
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -37,36 +39,50 @@ export const Header = () => {
         </motion.div>
         <nav className="hidden md:flex items-center gap-8">
           <motion.a
-            href="#features"
-            className="text-gray-300 hover:text-white transition-colors font-medium text-sm"
+            href="#home"
+            className={`text-gray-300 ${accentHover} transition-colors font-medium text-sm`}
             whileHover={{ y: -2 }}
           >
-            Features
+            Home
           </motion.a>
           <motion.a
-            href="#cities"
-            className="text-gray-300 hover:text-white transition-colors font-medium text-sm"
+            href="#services"
+            className={`text-gray-300 ${accentHover} transition-colors font-medium text-sm`}
             whileHover={{ y: -2 }}
           >
-            Cities
+            Services
           </motion.a>
           <motion.a
-            href="#waitlist"
-            className="text-gray-300 hover:text-white transition-colors font-medium text-sm"
+            href="#gallery"
+            className={`text-gray-300 ${accentHover} transition-colors font-medium text-sm`}
             whileHover={{ y: -2 }}
           >
-            Waitlist
+            Gallery
+          </motion.a>
+          <motion.a
+            href="#testimonials"
+            className={`text-gray-300 ${accentHover} transition-colors font-medium text-sm`}
+            whileHover={{ y: -2 }}
+          >
+            Testimonials
+          </motion.a>
+          <motion.a
+            href="#contact"
+            className={`text-gray-300 ${accentHover} transition-colors font-medium text-sm`}
+            whileHover={{ y: -2 }}
+          >
+            Contact
           </motion.a>
         </nav>
         <div className="hidden md:flex items-center gap-4">
           <motion.button
-            className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors"
+            className={`px-4 py-2 text-sm font-medium text-gray-300 ${accentHover} transition-colors`}
             whileHover={{ y: -2 }}
           >
             Login
           </motion.button>
           <motion.button
-            className="px-4 py-2 text-sm font-medium bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
+            className={`px-4 py-2 text-sm font-semibold rounded-lg bg-white text-black hover:bg-gray-200 transition-colors border border-white/10`}
             whileHover={{ scale: 1.05 }}
           >
             Sign Up
@@ -75,7 +91,7 @@ export const Header = () => {
 
         {/* Mobile menu button */}
         <motion.button
-          className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+          className={`md:hidden p-2 text-gray-300 ${accentHover} transition-colors`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -96,40 +112,33 @@ export const Header = () => {
             className="md:hidden mt-4 pt-4 border-t border-gray-800"
           >
             <nav className="flex flex-col gap-4">
-              <motion.a
-                href="#features"
-                className="text-gray-300 hover:text-white transition-colors font-medium text-sm py-2"
-                whileHover={{ x: 4 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Features
-              </motion.a>
-              <motion.a
-                href="#cities"
-                className="text-gray-300 hover:text-white transition-colors font-medium text-sm py-2"
-                whileHover={{ x: 4 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Cities
-              </motion.a>
-              <motion.a
-                href="#waitlist"
-                className="text-gray-300 hover:text-white transition-colors font-medium text-sm py-2"
-                whileHover={{ x: 4 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Waitlist
-              </motion.a>
+              {[
+                { href: '#home', label: 'Home' },
+                { href: '#services', label: 'Services' },
+                { href: '#gallery', label: 'Gallery' },
+                { href: '#testimonials', label: 'Testimonials' },
+                { href: '#contact', label: 'Contact' },
+              ].map((item) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  className={`text-gray-300 ${accentHover} transition-colors font-medium text-sm py-2`}
+                  whileHover={{ x: 4 }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
               <div className="flex flex-col gap-3 pt-2">
                 <motion.button
-                  className="w-full px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors text-left"
+                  className={`w-full px-4 py-2 text-sm font-medium text-gray-300 ${accentHover} transition-colors text-left`}
                   whileHover={{ x: 4 }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Login
                 </motion.button>
                 <motion.button
-                  className="w-full px-4 py-2 text-sm font-medium bg-white text-black rounded-lg hover:bg-gray-200 transition-colors"
+                  className="w-full px-4 py-2 text-sm font-semibold bg-white text-black rounded-lg hover:bg-gray-200 transition-colors border border-white/10"
                   whileHover={{ scale: 1.02 }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
